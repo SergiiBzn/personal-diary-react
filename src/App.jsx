@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import Header from './components/Header';
 
 const App = () => {
   const [entries, setEntries] = useState([]);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('entries');
@@ -16,7 +18,12 @@ const App = () => {
     localStorage.setItem('entries', JSON.stringify(entries));
   }, [entries]);
 
-  return <h1 className='text-3xl font-bold underline'>React + TailwindCSS</h1>;
+  return (
+    <>
+      <Header setIsAddModalOpen={() => setIsAddModalOpen(true)} />
+      {isAddModalOpen && <div>Modal open!</div>}
+    </>
+  );
 };
 
 export default App;
