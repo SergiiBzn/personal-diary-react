@@ -19,11 +19,18 @@ const App = () => {
     localStorage.setItem('entries', JSON.stringify(entries));
   }, [entries]);
 
+  const handleAddEntry = (entry) => {
+    setEntries((prev) => [...prev, entry]);
+  };
+
   return (
     <>
       <Header setIsAddModalOpen={() => setIsAddModalOpen(true)} />
       {isAddModalOpen && (
-        <AddEntryModal setIsAddModalOpen={setIsAddModalOpen} />
+        <AddEntryModal
+          setIsAddModalOpen={setIsAddModalOpen}
+          onSubmit={handleAddEntry}
+        />
       )}
     </>
   );
