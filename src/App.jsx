@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
+import AddEntryModal from './components/AddEntryModal';
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -21,7 +22,9 @@ const App = () => {
   return (
     <>
       <Header setIsAddModalOpen={() => setIsAddModalOpen(true)} />
-      {isAddModalOpen && <div>Modal open!</div>}
+      {isAddModalOpen && (
+        <AddEntryModal setIsAddModalOpen={setIsAddModalOpen} />
+      )}
     </>
   );
 };
