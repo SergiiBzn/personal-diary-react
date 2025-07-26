@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function EntryForm({ onSubmit }) {
+function EntryForm({ onSubmit, isError }) {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [image, setImage] = useState('');
@@ -31,6 +31,7 @@ function EntryForm({ onSubmit }) {
         onChange={(e) => setDate(e.target.value)}
         className='border p-2 rounded w-full'
       />
+      {isError}
       <input
         type='text'
         value={image}

@@ -1,6 +1,6 @@
 import EntryForm from './EntryForm';
 
-function AddEntryModal({ setIsAddModalOpen, onSubmit }) {
+function AddEntryModal({ setIsAddModalOpen, onSubmit, isError }) {
   return (
     <div
       className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'
@@ -19,12 +19,7 @@ function AddEntryModal({ setIsAddModalOpen, onSubmit }) {
         >
           Close
         </button>
-        <EntryForm
-          onSubmit={(data) => {
-            onSubmit(data);
-            setIsAddModalOpen(false);
-          }}
-        />
+        <EntryForm onSubmit={onSubmit} isError={isError} />
       </div>
     </div>
   );

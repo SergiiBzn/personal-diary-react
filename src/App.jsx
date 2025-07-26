@@ -5,6 +5,7 @@ import AddEntryModal from './components/AddEntryModal';
 const App = () => {
   const [entries, setEntries] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     const stored = localStorage.getItem('entries');
@@ -20,7 +21,15 @@ const App = () => {
   }, [entries]);
 
   const handleAddEntry = (entry) => {
-    setEntries((prev) => [...prev, entry]);
+    const isDuplicate = entries.some((entrie) => entrie.date === entry.date);
+
+    if (isDuplicate) {
+      setFormError('Choose another day, thank you!');
+    } else {
+      setEntries((prev) => [...prev, entry]);
+      setFormError('');
+      setIsAddModalOpen(false);
+    }
   };
 
   return (
@@ -30,6 +39,7 @@ const App = () => {
         <AddEntryModal
           setIsAddModalOpen={setIsAddModalOpen}
           onSubmit={handleAddEntry}
+          isError={formError}
         />
       )}
     </>
