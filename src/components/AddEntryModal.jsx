@@ -13,13 +13,13 @@ function AddEntryModal({ setIsAddModalOpen, onSubmit, isError }) {
         <div className='flex justify-between items-center mb-2'>
           <h2 className='text-xl font-semibold'>Add New Entry</h2>
         </div>
+        <EntryForm onSubmit={onSubmit} isError={isError} />
         <button
           onClick={() => setIsAddModalOpen(false)}
-          className='text-gray-500 hover:text-gray-700 transition'
+          className='text-gray-500 hover:text-gray-700  font-semibold py-2 px-4 rounded transition outline-1 bg-blue-50'
         >
           Close
         </button>
-        <EntryForm onSubmit={onSubmit} isError={isError} />
       </div>
     </div>
   );
