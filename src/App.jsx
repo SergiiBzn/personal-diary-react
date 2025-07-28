@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import AddEntryModal from './components/AddEntryModal';
+import EntryList from './components/EntryList';
 
 const App = () => {
   const [entries, setEntries] = useState([]);
@@ -42,6 +43,7 @@ const App = () => {
           isError={formError}
         />
       )}
+      <EntryList entries={entries} />
     </>
   );
 };
