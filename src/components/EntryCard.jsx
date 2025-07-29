@@ -7,7 +7,7 @@ function EntryCard({ entry, onCardClick }) {
         <img
           src={entry.image}
           alt={entry.title}
-          className='w-full h-auto mt-2 rounded'
+          className='h-auto mt-2 rounded'
         />
       )}
       <p className='mt-2 text-gray-700'>{entry.content.slice(0, 100)}...</p>
