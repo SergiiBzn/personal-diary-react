@@ -37,7 +37,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className='min-h-screen bg-gray-100 p-4 sm:p-8'>
       <Header setIsAddModalOpen={() => setIsAddModalOpen(true)} />
       {isAddModalOpen && (
         <AddEntryModal
@@ -62,7 +62,7 @@ const App = () => {
           }}
         />
       )}
-    </>
+    </div>
   );
 };
 
