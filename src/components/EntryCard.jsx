@@ -1,6 +1,6 @@
-function EntryCard({ entry }) {
+function EntryCard({ entry, onCardClick }) {
   return (
-    <div className='border rounded p-4 mb-4 shadow'>
+    <div onClick={onCardClick} className='border rounded p-4 mb-4 shadow'>
       <h2 className='text-lg font-semibold'>{entry.title}</h2>
       <p className='text-sm text-gray-500'>{entry.date}</p>
       {entry.image && (
