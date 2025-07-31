@@ -5,20 +5,21 @@ import EntryList from './components/EntryList';
 import ViewEntryModal from './components/ViewEntryModal';
 
 const App = () => {
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState(loadInitialEntries);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [formError, setFormError] = useState('');
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
 
-  useEffect(() => {
-    const stored = localStorage.getItem('entries');
-    if (stored) {
-      setEntries(JSON.parse(stored));
-    } else {
-      setEntries([]);
+  function loadInitialEntries() {
+    try {
+      const stored = localStorage.getItem('entries');
+      return stored ? JSON.parse(stored) : [];
+    } catch (err) {
+      console.error('Failed to parse localStorage:', err);
+      return [];
     }
-  }, []);
+  }
 
   useEffect(() => {
     localStorage.setItem('entries', JSON.stringify(entries));
